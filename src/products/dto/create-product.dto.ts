@@ -1,4 +1,5 @@
 import {
+  IsDate,
   IsInt,
   IsNotEmpty,
   IsNumber,
@@ -28,7 +29,14 @@ export class CreateProductDto {
   base_price: number;
 
   @IsNumber()
-  @IsPositive()
   @IsOptional()
   sale_price: number;
+
+  @IsOptional()
+  @IsString()
+  image: string;
+
+  @IsOptional()
+  @IsDate()
+  createdAt: Date = new Date();
 }
