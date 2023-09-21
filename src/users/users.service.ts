@@ -1,9 +1,9 @@
-import { CreateUserDto } from './dto/create-user.dto';
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { RegisterDto } from '../auth/dto/register.dto';
 
 @Injectable()
 export class UsersService {
@@ -12,26 +12,8 @@ export class UsersService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  async create(createUserDto: CreateUserDto) {
-    try {
-      const user = await this.userRepository.findOne({
-        where: { userName: createUserDto.userName }
-      });
-
-    
-      if (!user) {
-        return await this.userRepository.save(createUserDto);
-      } 
-        
-     // throw new BadRequestException('User already exists');
-      
-      return {
-        message: 'User already exists',
-        status: 400
-      };
-    } catch (error) {
-      console.error(error);
-    }
+  async create(registerDto: RegisterDto) {
+    return await this.userRepository.save(registerDto);
   }
 
   async findOneByUserName(userName: string) {
