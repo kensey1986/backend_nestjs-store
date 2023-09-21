@@ -1,14 +1,18 @@
 import { Injectable } from '@nestjs/common';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class AuthService {
+
+    constructor(
+    private readonly usersService: UsersService
+    ) { }
     
     async login() {
-        console.log('Login');
         return {message: 'Login...'};
     }
     async register() {
-        throw new Error('Method not implemented.');
+        return {message: 'Register...'};
     }
 
 
