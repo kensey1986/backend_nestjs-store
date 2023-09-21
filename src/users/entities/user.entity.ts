@@ -4,28 +4,35 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
 @Entity()
-export class Product {
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true })
+  @Column()
   name: string;
 
   @Column()
-  description: string;
+  lastname: string;
+
+  @Column()
+  phone: string;
+
+  @Column()
+  address: string;
+
+  @Column({ unique: true })
+  username: string;
+
+  @Column()
+  password: string;
 
   @Column('text')
   image: string;
 
   @Column()
-  stock: number;
-
-  @Column()
-  base_price: number;
-
-  @Column()
-  sale_price: number;
+  email: string;
 
   @Column()
   createdAt: Date;
