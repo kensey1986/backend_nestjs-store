@@ -9,42 +9,42 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   @MinLength(3)
-  name: string;
+  firtsName: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(3)
-    lastname: string;
+  lastName: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(10)
-    phone: string;
+  phone: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(10)
-    address: string;
+  address: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(3)
-    username: string;
+  userName: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(6)
-    password: string;
+  password: string;
 
   @IsString()
   @IsOptional()
-    image: string;
+  image: string;
 
   @IsString()
   @IsNotEmpty()
-    email: string;
+  email: string;
 
   @IsOptional()
   @IsDate()
-    createdAt: Date = new Date();
+  createdAt: Date = new Date();
 }

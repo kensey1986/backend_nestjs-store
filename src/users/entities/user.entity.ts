@@ -11,10 +11,10 @@ export class User {
   id: number;
 
   @Column()
-  name: string;
+  firtsName: string;
 
   @Column()
-  lastname: string;
+  lastName: string;
 
   @Column()
   phone: string;
@@ -23,7 +23,7 @@ export class User {
   address: string;
 
   @Column({ unique: true })
-  username: string;
+  userName: string;
 
   @Column()
   password: string;

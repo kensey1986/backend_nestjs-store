@@ -9,7 +9,7 @@ import { Repository } from 'typeorm';
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
-    private productRepository: Repository<Product>,
+    private readonly productRepository: Repository<Product>,
   ) {}
 
   async create(createProductDto: CreateProductDto) {
