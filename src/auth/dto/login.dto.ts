@@ -1,3 +1,4 @@
+import { Transform } from 'class-transformer';
 import {
     IsDate,
     IsNotEmpty,
@@ -5,4 +6,14 @@ import {
     IsString,
     MinLength
   } from 'class-validator';
-  export class LoginDto {}
+  export class LoginDto {
+
+    @IsString()
+    @IsNotEmpty()
+    userName: string;
+
+    @Transform(({ value }) => value.trim())
+    @IsString()
+    @IsNotEmpty()
+    password: string;
+  }
