@@ -28,7 +28,7 @@ export class User {
   @Column()
   password: string;
 
-  @Column( {default: 'user'})
+  @Column( {default: ['user']})
   role: string;
 
   @Column('text')

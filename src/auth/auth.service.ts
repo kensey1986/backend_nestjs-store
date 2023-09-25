@@ -19,8 +19,8 @@ export class AuthService {
         if (user) {
             const isMatch = await bcryptjs.compare(password, user.password);
             if (isMatch) {
-                const { userName, id} = user;
-                const payload = { userName, sub: id };
+                const { userName, id, role} = user;
+                const payload = { userName, sub: id, role };
                 const token = await this.jwtService.signAsync(payload);
                 return {token, userName};
             }
@@ -36,7 +36,8 @@ export class AuthService {
             
             if (!isEmail) {
                 registerDto.password = await bcryptjs.hash(registerDto.password, 10);
-                return await this.usersService.create(registerDto);
+                await this.usersService.create(registerDto);
+                return { message: 'Usuario creado con exito', userName, email}
             }
             throw new BadRequestException('El email ya existe');
             
