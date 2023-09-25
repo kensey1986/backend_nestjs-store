@@ -5,6 +5,8 @@ import { LoginDto } from './dto/login.dto';
 import { AuthGuard } from './guard/auth.guard';
 import { Roles } from './decorators/roles.decorator';
 import { RolesGuard } from './guard/roles.guard';
+import { Role } from './enums/rol.enum';
+import { Auth } from './decorators/auth.decorator';
 
 interface RequestWithUser extends Request {
     user: {
@@ -36,11 +38,17 @@ export class AuthController {
         return this.authService.login(loginDto);
     }
 
+    // @Get('profile')
+    // @Roles([Role.ADMIN, Role.USER])
+    // @UseGuards(AuthGuard, RolesGuard)
+    // profile(@Request() req: RequestWithUser) {
+    // return req.user;
+    // }
+
     @Get('profile')
-    @Roles(['admin, user'])
-    @UseGuards(AuthGuard, RolesGuard)
+    @Auth(Role.ADMIN, Role.USER)
     profile(@Request() req: RequestWithUser) {
     return req.user;
-}
+    }
 
 }
